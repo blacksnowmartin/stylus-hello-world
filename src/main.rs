@@ -1,6 +1,13 @@
-#![cfg_attr(not(feature = "export-abi"), no_main)]
+use stylus_sdk::{alloy_primitives::U256, prelude::*};
 
-#[cfg(feature = "export-abi")]
-fn main() {
-    stylus_hello_world::print_abi("MIT-OR-APACHE-2.0", "pragma solidity ^0.8.23;");
+sol storage! {
+    #[entrypoint]
+    pub struct Counter {
+        uint256 number;
+        }
+}
+
+#[external]
+impl Counter {
+   pub fn number(&self) -> Result<U256, Vec<un> {
 }
